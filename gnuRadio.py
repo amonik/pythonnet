@@ -23,7 +23,7 @@ call("sudo apt-get install python-numpy python-scipy python-matplotlib ipython i
 call("sudo apt-get install libboost-all-dev libusb-1.0-0-dev python-cheetah doxygen python-docutils", shell = True)
 call("echo Installing USRP Driver UHD", shell = True)
 sleep(3)
-call("sudo chmod u+x UHDDriver.sh", shell = True)
+call("sudo chmod u+x usrp.sh", shell = True)
 call("./UHDDriver.sh")
 call("echo Installing Git", shell = True)
 sleep(3)
