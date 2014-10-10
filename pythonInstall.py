@@ -1,8 +1,6 @@
-#!/usr/bin/python2
-#!/usr/bin/env python
-
-
-#Python Install script
+'''
+Python install script Version 2
+'''
 
 import subprocess as sp
 from os import *
@@ -18,15 +16,16 @@ if py_ver >= (2, 7):
 	print("You have Python Installed Proceeding to system update!")
 		
 	sleep(5)
-	sp.call(["sudo", "apt-get", "-y", "update"])
-	sp.call(["sudo", "apt-get" "- y", "upgrade "])
-	sp.call(["sudo", "apt-get", "-y" ,"install python-dev"])
-	sp.call(["sudo", "apt-get", "-y", "install" "libboost-all-dev", "libusb-1.0-0-dev", "python-cheetah" "doxygen", "python-docutils"])
+	sp.call("sudo apt-get update", shell = True)
+	sp.call("sudo apt-get upgrade", shell = True )
+	sp.call("sudo apt-get install python-dev", shell = True)
+	sp.call("sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose", shell = True)
+	sp.call("sudo apt-get install libboost-all-dev libusb-1.0-0-dev python-cheetah doxygen python-docutils", shell = True)
 	sp.call("sudo add-apt-repository ppa:webupd8team/sublime-text-2", shell = True)
-	sp.call("sudo apt-get -y update", shell = True)
-	sp.call("sudo apt-get -y install sublime-text", shell = True)
+	sp.call("sudo apt-get update", shell = True)
+	sp.call("sudo apt-get install sublime-text", shell = True)
 	print("------------ Setup complete --------------")
-		
+			
 else:
 
 	sp.call("sudo apt-get update", shell = True)
