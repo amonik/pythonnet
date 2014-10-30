@@ -45,4 +45,5 @@ else:
 	sp.call("sudo add-apt-repository ppa:webupd8team/sublime-text-2", shell = True)
 	sp.call("sudo apt-get update", shell = True)
 	sp.call("sudo apt-get install sublime-text", shell = True)
+	sp.call("sudo apt-get install python-mpi4py, shell = True)
 	print("------------ Setup complete --------------")
