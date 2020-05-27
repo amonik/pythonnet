@@ -11,9 +11,12 @@ s1.set_value(8, 54)
 """Set the values of the square"""
 print(s1.get_area())
 """print the area"""
-
+s1.set_color("Black")
+print("The color is {}".format(s1.get_color()))
 
 s2 = Triangle()
 """Call an instance of the triangle class"""
 s2.set_value(35, 89)
 print(s2.get_tri_area())
+s2.set_color("Blue")
+print("The color is {}".format(s2.get_color()))
