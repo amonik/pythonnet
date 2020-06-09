@@ -12,6 +12,7 @@ def fahrenheit_to_celsius(f):
 
 
 temp = 0
+print("{} {}".format("FAHRENHEIT", "CELSIUS"))
 while 20 >= temp >= 0:
-    print(temp, round(fahrenheit_to_celsius(temp), 2))
+    print("{:^10} {:^5}".format(temp, round(fahrenheit_to_celsius(temp), 2)))
     temp += 1

@@ -1,12 +1,17 @@
 """
 Take the input of the package weight from user as float.
+Ask the user again if input is not a digit.
 Create a if, elif, else condition.
 Display the shipping rate.
 """
-
-weight = input("Please enter in the weight of your package: ")
-weight_package = float(weight)
 shipping_charges = 0
+
+while True:
+    try:
+        weight_package = float(input("Please enter in the weight of your package: "))
+        break
+    except ValueError:
+        print("Oops! That was not a valid number. Try again...")
 
 if weight_package <= 2:
     shipping_charges = 1.50
@@ -17,4 +22,4 @@ elif 6 < weight_package <= 10:
 elif weight_package > 10:
     shipping_charges = 4.75
 
-print("Your shipping rate is {}".format(shipping_charges, '.2g'))
+print("Your shipping rate is ${:.2f}".format(shipping_charges))
