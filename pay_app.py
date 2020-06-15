@@ -2,8 +2,12 @@ import employee
 
 
 def main():
+    """Get the users Name as a string"""
     name = input("Please enter in your name: ")
 
+    """Ask the user to enter a number if they are a Director, Manager or Staff."""
+    """This will check and make sure the user only enters in 1,2, 
+    or 3 and a number greater than zero"""
     while True:
         try:
             designation_number = int(input("Please enter in \n1 for Director "
@@ -13,7 +17,7 @@ def main():
             print("Invalid number entered.")
         except Exception as e:
             print(e)
-
+    """Gets the user salary and makes sure is a number and greater than 0"""
     while True:
         try:
             salary = float(input("Please enter in your salary: "))
