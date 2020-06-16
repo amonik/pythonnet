@@ -33,7 +33,7 @@ def main():
     employee1.set_name(name)
     employee1.set_designation(designation_number)
     employee1.set_salary(salary)
-    print(employee1.__str__())
+    print(employee1)
 
 
 if __name__ == '__main__':
