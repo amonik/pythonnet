@@ -1,9 +1,9 @@
 class Employee:
-    """ Intialize the varibles"""
-    def __init__(self):
-        self.__name = " "
-        self.__designation = " "
-        self.__salary = 0
+    """ Initialize variables"""
+    def __init__(self, name, designation, salary):
+        self.__name = name
+        self.__designation = designation
+        self.__salary = salary
 
     """All the getters and setters are used because we use private variables with __"""
     """The set_name method sets the set_name attribute"""

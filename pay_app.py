@@ -29,10 +29,7 @@ def main():
             print("Oops! That was not a valid number. Try again...")
 
     """Create Employee"""
-    employee1 = employee.Employee()
-    employee1.set_name(name)
-    employee1.set_designation(designation_number)
-    employee1.set_salary(salary)
+    employee1 = employee.Employee(name, designation_number, salary)
     print(employee1)
 
 
