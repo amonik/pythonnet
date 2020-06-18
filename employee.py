@@ -1,9 +1,9 @@
 class Employee:
     """ Initialize variables"""
-    def __init__(self, name, designation, salary):
-        self.__name = name
-        self.__designation = designation
-        self.__salary = salary
+    def __init__(self):
+        self.__name = " "
+        self.__designation = 0
+        self.__salary = 0
 
     """All the getters and setters are used because we use private variables with __"""
     """The set_name method sets the set_name attribute"""
@@ -31,7 +31,7 @@ class Employee:
         return self.__salary
 
     """Calculate the bonus based on input from the user, calls get_designation method"""
-    def calculate_bonus(self):
+    def __calculate_bonus(self):
         if Employee.get_designation(self) == 1:
             return 0.10 * Employee.get_salary(self)
         elif Employee.get_designation(self) == 2:
@@ -41,13 +41,13 @@ class Employee:
 
     """Calculates the total salary by calling the calculate_bonus and get_salary methods and adding them"""
     def total_salary(self):
-        return Employee.calculate_bonus(self) + Employee.get_salary(self)
+        return Employee.__calculate_bonus(self) + Employee.get_salary(self)
 
     """Used for printing the current state of the variables, it also calls various methods above"""
     def __str__(self):
         return "Name: {}\nBonus: {}\nTotal Salary: {}\n" \
                .format(Employee.get_name(self),
-                       round(Employee.calculate_bonus(self), 2),
+                       round(Employee.__calculate_bonus(self), 2),
                        round(Employee.total_salary(self), 2))
 
 
