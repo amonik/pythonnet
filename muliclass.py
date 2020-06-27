@@ -19,7 +19,7 @@ class OrderLine:
     def __init__(self, product):
         self.__product = product
         self.__quantity = 0
-        self.__product_price = " "
+        self.__product_price = ""
 
     def set_product(self, product):
         self.__product = product
@@ -43,15 +43,15 @@ class OrderLine:
         return self.get_product_price() * self.get_quantity()
 
     def __str__(self):
-        return "{} {} {} {}".format(self.get_product(), str(self.get_quantity()),
-                                    str(self.get_product_price()), str(self.get_line_total()))
+        return "{} \t\t     {} \t   {} \t     {}".format(self.get_product(), str(self.get_quantity()),
+                                                         str(self.get_product_price()), str(self.get_line_total()))
 
 
 class Address:
     def __init__(self):
-        self.__first_name = " "
-        self.__last_name = " "
-        self.__address = " "
+        self.__first_name = ""
+        self.__last_name = ""
+        self.__address = ""
 
     """All the getters and setters are used because we use private variables with __"""
     def set_first_name(self, first_name):
@@ -78,9 +78,9 @@ class Address:
 
 class Order:
     def __init__(self, order_id):
-        self.__customer_order = " "
-        self.__ship_to = " "
-        self.__bill_to = " "
+        self.__customer_order = []
+        self.__ship_to = ""
+        self.__bill_to = ""
         self.__grand_total = 0
         self.__order_id = order_id
 
@@ -113,3 +113,7 @@ class Order:
 
     def get_order_id(self):
         return self.__order_id
+
+    def __str__(self):
+        return "\nOrder #: {}\t\tOrder Total: {}\nProduct Name\tQty\tUnit Price\tTotal"\
+            .format(self.get_order_id(), self.get_grand_total())
