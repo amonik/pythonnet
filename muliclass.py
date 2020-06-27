@@ -43,7 +43,7 @@ class OrderLine:
         return self.get_product_price() * self.get_quantity()
 
     def __str__(self):
-        return "{:16} {:5} {:8} {}".format(self.get_product(), str(self.get_quantity()),
+        return "{:13} {:5} {:8} {}".format(self.get_product(), str(self.get_quantity()),
                                            str(self.get_product_price()), str(self.get_line_total()))
 
 

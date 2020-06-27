@@ -54,8 +54,8 @@ my_list = [order_line_1, order_line_2, order_line_3]
 order_num.set_customer_order(my_list)
 
 print(order_num)
-for order in order_num.get_customer_order():
-    print(order)
+for order in range(len(order_num.get_customer_order())):
+    print(str(order + 1) + ".", order_num.get_customer_order()[order])
 print("Ship To: {}Bill To: {}".format(order_num.get_ship_to(), order_num.get_bill_to()))
 
 
