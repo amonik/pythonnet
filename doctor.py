@@ -89,7 +89,7 @@ class Surgeon(Doctor):
 
     def __str__(self):
         return "Name: {}\nPhone: {}\nEmail Address: {}\nAddress: {}\nAccepted Insurance: " \
-               "{}\nYears of Experience: {}\nSpeciality: {}\nTimes Available: {}\nAccepting Patients: {}\n"\
+               "{}\nYears of Experience: {}\nSpeciality: {}\nTimes Available: {}\nAccepting Patients {}\n"\
             .format(self.get_name(), self.get_phone(), self.get_email(), self.get_address(), self.get_network(),
                     self.get_years_of_exp(), self.get_speciality(), self.get_available_time(),
                     self.get_accepting_patients())
