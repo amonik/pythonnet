@@ -1,5 +1,5 @@
-import building
-import room
+import buildings
+import rooms
 
 
 def main():
@@ -45,13 +45,13 @@ def main():
 
     # the_gas = input("Please enter in 'yes' or 'no' if your house has gas: ").lower()
     # the_water = input("Please enter 'yes' or 'no' if you house has water: ").lower()
-    rooms_1 = room.Room()
+    rooms_1 = rooms.Room()
     rooms_1.set_square_feet(my_rooms)
     # rooms_1.set_gas(the_gas)
     # rooms_1.set_water(the_water)
 
     """Drop rooms attribute into House Object"""
-    house = building.House(rooms_1.get_square_feet())
+    house = buildings.House(rooms_1.get_square_feet())
     """Call the function for Polymorphism and print"""
     print("\nHOME")
     print("____________________")
@@ -79,12 +79,12 @@ def main():
         # Update the Dictionary
         my_com_rooms.update({"room{}".format(i + 1): my_room})
 
-    rooms_2 = room.Room()
+    rooms_2 = rooms.Room()
     rooms_2.set_square_feet(my_com_rooms)
 
     print("\nCOMMERCIAL BUILDING")
     print("____________________")
-    com_building = building.Commercial(rooms_2.get_square_feet())
+    com_building = buildings.Commercial(rooms_2.get_square_feet())
     print("Your Commercial Building Siding is: {}".format(com_building.get_siding()))
     # Call the Polymorphism function
     get_total_square_feet(com_building)
