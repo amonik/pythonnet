@@ -5,15 +5,41 @@ import room
 def main():
     print("_________________________________________")
     print("HOME Building")
-    living_room_size = float(input("Please enter size of your living room: "))
-    kitchen_size = float(input("Please enter size of your kitchen: "))
-    dining_size = float(input("Please enter size of your dining room: "))
-    number_bed_rooms = int(input("Please enter the number of bedrooms: "))
+    while True:
+        try:
+            living_room_size = float(input("Please enter size of your living room: "))
+            break
+        except ValueError:
+            print("Error....Please enter in a number!")
+    while True:
+        try:
+            kitchen_size = float(input("Please enter size of your kitchen: "))
+            break
+        except ValueError:
+            print("Error...Please enter in a number!")
+    while True:
+        try:
+            dining_size = float(input("Please enter size of your dining room: "))
+            break
+        except ValueError:
+            print("Error...Please enter in a number!")
+    while True:
+        try:
+            number_bed_rooms = int(input("Please enter the number of bedrooms: "))
+            break
+        except ValueError:
+            print("Error...Please enter in a number!")
 
     """Set items for the Room Object"""
     my_rooms = {}
     for i in range(number_bed_rooms):
-        my_bedroom = float(input("Please enter size of bedroom {}: ".format(i + 1)))
+        while True:
+            try:
+                my_bedroom = float(input("Please enter size of bedroom {}: ".format(i + 1)))
+                break
+            except ValueError:
+                print("Error...Please enter in a number")
+        # Update the dictionary
         my_rooms.update({"Bedroom{}".format(i + 1): my_bedroom})
     my_rooms.update({"Living Room": living_room_size, "Kitchen": kitchen_size, "Dinning Room": dining_size})
 
@@ -36,10 +62,21 @@ def main():
     """Set items for the Room Object"""
     print("_________________________________________")
     print("COMMERCIAL Building")
-    number_rooms = int(input("Please enter the number of rooms in your commercial building: "))
+    while True:
+        try:
+            number_rooms = int(input("Please enter the number of rooms in your commercial building: "))
+            break
+        except ValueError:
+            print("Error...Please enter in a number!")
     my_com_rooms = {}
     for i in range(number_rooms):
-        my_room = float(input("Please enter size of room {}: ".format(i + 1)))
+        while True:
+            try:
+                my_room = float(input("Please enter size of room {}: ".format(i + 1)))
+                break
+            except ValueError:
+                print("Error...Please enter in a number!")
+        # Update the Dictionary
         my_com_rooms.update({"room{}".format(i + 1): my_room})
 
     rooms_2 = room.Room()
