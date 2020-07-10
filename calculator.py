@@ -36,7 +36,8 @@ class Calculator:
         self.result_label.pack(side='left')
         self.equal_to_label.pack(side='left')
 
-        # Create button widgets.
+        # Create button widgets and pass function to it.
+        # The numbers allow for conditional statement to know which button is pushed.
         self.multiply_button = tk.Button(self.button_frame, text='*', command=lambda: self.get_total(1))
         self.divide_button = tk.Button(self.button_frame, text='/', command=lambda: self.get_total(2))
         self.add_button = tk.Button(self.button_frame, text='+', command=lambda: self.get_total(3))
