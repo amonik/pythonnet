@@ -1,11 +1,7 @@
 import tkinter
 
 
-def get_deposit(my_deposit):
-    return my_deposit
-
-
-class SweetMoonBank:
+class MoonBank:
     def __init__(self):
         # Establish variables
         self.my_deposit = 0
@@ -15,7 +11,7 @@ class SweetMoonBank:
         self.my_total_withdrawals = []
         # Create the main window.
         self.main_window = tkinter.Tk()
-        self.main_window.title("Welcome to Sweet Moon Bank")
+        self.main_window.title("Welcome to Moon Bank")
         self.main_window.geometry("350x350")
         self.button_frame = tkinter.Frame(self.main_window)
         self.deposit_frame = tkinter.Frame(self.main_window)
@@ -84,7 +80,7 @@ class SweetMoonBank:
 
 
 def main():
-    SweetMoonBank()
+    MoonBank()
 
 
 if __name__ == '__main__':
