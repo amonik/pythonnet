@@ -11,25 +11,31 @@ class Product:
     def set_product_name(self, product_name):
         self.__product_name = product_name
 
-    """ The get_product_name returns the product_name attribute"""
-    def get_product_name(self):
-        return self.__product_name
-
     """" The set_products_price sets the product_price attribute"""
     def set_product_price(self, product_price):
         self.__product_price = product_price
+
+    def set_quantity(self, quantity):
+        self.__product_quantity = quantity
+
+    """ The get_product_name returns the product_name attribute"""
+    def get_product_name(self):
+        return self.__product_name
 
     """ The get_product_price returns the product_price attribute"""
     def get_product_price(self):
         return self.__product_price
 
+    def get_quantity(self):
+        return self.__product_quantity
+
     """ The calculate_tax returns the tax rate of 8.25% on the product"""
     def subtotal(self):
-        return 0.0825 * Product.get_product_price(self)
+        return Product.get_quantity(self) * Product.get_product_price(self)
 
     """" The get_total_price returns the tax of each product plus the price of the product"""
     def get_total_price(self):
-        return round(Product.get_product_price(self) + Product.calculate_tax(self), 2)
+        return round(Product.subtotal(self) * 1.0825, 2)
 
     """Returns the objects state as a string"""
     def __str__(self):
