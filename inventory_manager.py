@@ -19,7 +19,6 @@ def quit_program():
 # Call all functions below from this main.
 def main():
     # Initialize a variable for the user's choice.
-    choice = 0
     choice = display_menu()
     if choice == ADD_ITEM:
         print("\nAvailable Items")
@@ -50,8 +49,6 @@ def display_menu():
         except ValueError:
             print("Oops!  That was no valid number.  Try again...")
 
-    # Validate the choice.
-
     # return the user's choice.
     return choice
 
@@ -59,8 +56,9 @@ def display_menu():
 def add_items():
     print("0. To Quit")
     goods = MY_INVENTORY.get_base_inventory().items()
+    given_goods = len(list(goods))
     my_index = 0
-    print("10. Add your own items\n")
+    print("{}. Add your own items\n".format(given_goods + 1))
     while True:
         try:
             choice = int(input('Select an item by number to add to your cart: '))
@@ -80,10 +78,9 @@ def add_items():
                 break
             except ValueError:
                 print("You must enter in a number")
-        # print("You choose {} {}".format(NAME, PRICE))
         MY_INVENTORY.set_product_name(NAME)
         MY_INVENTORY.set_product_price(PRICE)
-    elif choice == 10:
+    elif choice == given_goods + 1:
         while True:
             try:
                 number_of_items = int(input("Please enter in the number of items you want to add: "))
@@ -91,7 +88,7 @@ def add_items():
             except ValueError:
                 print("This should be a digit (number)!: ")
         for num in range(number_of_items):
-            NAME.append(input('Please enter the name of the product {}: '.format(num)))
+            NAME.append(input('Please enter the name of the product {}: '.format(num + 1)))
             while True:
                 try:
                     PRICE.append(float(input('Please enter in the price for {}: '.format(NAME[num]))))
