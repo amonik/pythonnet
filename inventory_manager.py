@@ -1,13 +1,11 @@
 import inventory
-import pickle
 import sys
 
 # Global constants for menu choices
 ADD_ITEM = 1
 DISPLAY_RECEIPT = 2
-SAVE_DISPLAY_RECEIPT = 3
 QUIT = 0
-my_inventory = inventory.Inventory()
+MY_INVENTORY = inventory.Inventory()
 NAME = []
 QUANTITY = []
 PRICE = []
@@ -29,7 +27,7 @@ def main():
         add_items()
     elif choice == QUIT:
         quit_program()
-    my_inventory.subtotal()
+    MY_INVENTORY.line_total()
 
 
 # Display choices for user like exit, search for item, add own item.
@@ -40,14 +38,13 @@ def display_menu():
     print('0. Quit')
     print('1. Add item')
     print('2. Display receipt')
-    print('3. Save and Display receipt')
     print()
 
     # Get the user's choice.
     while True:
         try:
             choice = int(input('Enter your choice: '))
-            if choice < QUIT or choice > SAVE_DISPLAY_RECEIPT:
+            if choice < QUIT or choice > DISPLAY_RECEIPT:
                 choice = int(input('That is not an option, please enter a number between 0 and 3: '))
             break
         except ValueError:
@@ -61,7 +58,7 @@ def display_menu():
 
 def add_items():
     print("0. To Quit")
-    goods = my_inventory.get_base_inventory().items()
+    goods = MY_INVENTORY.get_base_inventory().items()
     my_index = 0
     print("10. Add your own items\n")
     while True:
@@ -79,46 +76,42 @@ def add_items():
         while True:
             try:
                 QUANTITY.append(int(input('Please enter in the quantity for {}: '.format(NAME))))
-                my_inventory.set_quantity(QUANTITY)
+                MY_INVENTORY.set_quantity(QUANTITY)
                 break
             except ValueError:
                 print("You must enter in a number")
-        print("You choose {} {}".format(NAME, PRICE))
-        my_inventory.set_product_name(NAME)
-        my_inventory.set_product_price(PRICE)
+        # print("You choose {} {}".format(NAME, PRICE))
+        MY_INVENTORY.set_product_name(NAME)
+        MY_INVENTORY.set_product_price(PRICE)
     elif choice == 10:
-        NAME.append(input('Please enter the name of your first item: '))
-        my_inventory.set_product_name(NAME)
         while True:
             try:
-                PRICE.append(float(input('Please enter in the price: ')))
-                my_inventory.set_product_price(PRICE)
+                number_of_items = int(input("Please enter in the number of items you want to add: "))
                 break
             except ValueError:
-                print("Should be a number ")
-        while True:
-            try:
-                QUANTITY.append(int(input('Please enter in the quantity: ')))
-                my_inventory.set_quantity(QUANTITY)
-                break
-            except ValueError:
-                print("Please enter in the quantity, it should be a number ")
+                print("This should be a digit (number)!: ")
+        for num in range(number_of_items):
+            NAME.append(input('Please enter the name of the product {}: '.format(num)))
+            while True:
+                try:
+                    PRICE.append(float(input('Please enter in the price for {}: '.format(NAME[num]))))
+                    MY_INVENTORY.set_product_price(PRICE)
+                    break
+                except ValueError:
+                    print("Should be a number ")
+            while True:
+                try:
+                    QUANTITY.append(int(input('Please enter in the quantity of {}: '.format(NAME[num]))))
+                    MY_INVENTORY.set_quantity(QUANTITY)
+                    break
+                except ValueError:
+                    print("Please enter in the quantity, it should be a number ")
+        MY_INVENTORY.set_product_name(NAME)
+
     elif choice == QUIT:
         quit_program()
 
 
-# Generate receipt, do calculations, and save to a file.
-# Here we will call Inventory class to calculate subtotal, total price and save and display receipt.
-# Have option to return to main menu.
-# Put try, except, finally here. The finally will print even if unable to save it.
-
-def save_receipt():
-    pass
-
-
-# display receipt of purchase, maybe as text and GUI.
-# Here we will call Inventory class to calculate subtotal, total price and save and display receipt.
-# Have option to return to main menu.
 def display_receipt():
     pass
 
