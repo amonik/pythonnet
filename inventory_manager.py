@@ -65,7 +65,7 @@ def add_items():
             break
         except ValueError:
             print("Please enter in the number corresponding to the item you want. ")
-    if choice <= len(list(goods)) and choice != 0:
+    if choice <= given_goods and choice != 0:
         for k, v in goods:
             my_index += 1
             if my_index == choice:
