@@ -8,6 +8,7 @@ class Inventory:
         self.__product_price = []
         self.__product_quantity = []
         self.__base_inventory = {}
+        self.__total = []
 
     """ The set_product method sets the product_name attribute"""
 
@@ -39,10 +40,11 @@ class Inventory:
 
     def line_total(self):
         for i in range(len(Inventory.get_quantity(self))):
-            print("{} - {} at {} line total is: {}".format(self.get_quantity()[i], self.get_product_name()[i],
-                                                           self.get_product_price()[i],
-                                                           round(self.get_quantity()[i] *
-                                                                 self.get_product_price()[i], 2)))
+            print("{} x {} at ${:.2f} line total is: ${:.2f}".format(self.get_quantity()[i],
+                                                                     self.get_product_name()[i],
+                                                                     self.get_product_price()[i],
+                                                                     self.get_quantity()[i] *
+                                                                     self.get_product_price()[i], 2))
 
     def get_base_inventory(self):
         self.__base_inventory = {'Bread': 2.49,
@@ -56,17 +58,7 @@ class Inventory:
             print("{}. {}  {}".format(my_index, k, v))
         return self.__base_inventory
 
-
-class Total:
-    def __init__(self):
-        pass
-
-    def calculate_tax(self):
-        pass
-
-    def show_line_total(self):
-        pass
-
-    def display_grand_total(self):
-        pass
-
+    def grand_total(self):
+        for j in range(len(self.get_product_price())):
+            self.__total.append(self.get_product_price()[j] * self.get_quantity()[j])
+        return "Your grand total with tax is: ${:.2f}\n".format(sum(self.__total) * 1.0825)
