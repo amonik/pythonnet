@@ -81,8 +81,8 @@ def add_items():
     goods = MY_INVENTORY.get_base_inventory().items()
     given_goods = len(list(goods))
     my_index = 0
-    print("{}. Add all items to the cart.\n".format(given_goods + 1))
-    print("{}. Add your own items.".format(given_goods + 2))
+    print("{}. Add all items to the cart.".format(given_goods + 1))
+    print("{}. Add your own items.\n".format(given_goods + 2))
     while True:
         try:
             choice = int(input('Select an item by number to add to your cart: '))
