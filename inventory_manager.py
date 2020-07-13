@@ -22,8 +22,8 @@ def return_main_menu():
             print("Would your like to return to the main menu?")
             response = int(input("0. Exit\n1. Main Menu:\n"))
             return response
-        except ValueError as e:
-            print(e)
+        except ValueError:
+            print("That is not a valid options. Please enter 0  or 1")
 
 
 # Call all functions below from this main.
@@ -81,8 +81,8 @@ def add_items():
     goods = MY_INVENTORY.get_base_inventory().items()
     given_goods = len(list(goods))
     my_index = 0
-    print("{}. Add your own items.".format(given_goods + 1))
-    print("{}. Add all items to the cart.\n".format(given_goods + 2))
+    print("{}. Add all items to the cart.\n".format(given_goods + 1))
+    print("{}. Add your own items.".format(given_goods + 2))
     while True:
         try:
             choice = int(input('Select an item by number to add to your cart: '))
@@ -106,7 +106,7 @@ def add_items():
                 print("You must enter in a number")
         # MY_INVENTORY.set_product_name(NAME)
         # MY_INVENTORY.set_product_price(PRICE)
-    elif choice == given_goods + 1:
+    elif choice == given_goods + 2:
         while True:
             try:
                 number_of_items = int(input("Please enter in the number of items you want to add: "))
@@ -130,7 +130,7 @@ def add_items():
                 except ValueError:
                     print("Please enter in the quantity, it should be a number ")
         MY_INVENTORY.set_product_name(NAME)
-    elif choice == given_goods + 2:
+    elif choice == given_goods + 1:
         for k, v in goods:
             NAME.append(k)
             PRICE.append(v)
