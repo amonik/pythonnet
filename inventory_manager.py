@@ -17,12 +17,10 @@ def quit_program():
 
 
 def return_main_menu():
-    print("Would your like to return to the main menu?")
     while True:
         try:
-            response = input("Press 'y' to return to main menu or 'n' to exit..: ")
-            if not response:
-                raise ValueError("Empty String")
+            print("Would your like to return to the main menu?")
+            response = int(input("0. Exit\n1. Main Menu:\n"))
             return response
         except ValueError as e:
             print(e)
@@ -38,18 +36,18 @@ def main():
         add_items()
         display_receipt()
         my_response = return_main_menu()
-        if my_response == 'y':
+        if my_response == 1:
             return main()
-        elif my_response == 'n':
+        elif my_response == 0:
             quit_program()
     elif choice == QUIT:
         quit_program()
     elif choice == DISPLAY_RECEIPT:
         display_receipt()
         my_response = return_main_menu()
-        if my_response == 'y':
+        if my_response == 1:
             return main()
-        elif my_response == 'n':
+        elif my_response == 0:
             quit_program()
 
 
@@ -83,7 +81,8 @@ def add_items():
     goods = MY_INVENTORY.get_base_inventory().items()
     given_goods = len(list(goods))
     my_index = 0
-    print("{}. Add your own items\n".format(given_goods + 1))
+    print("{}. Add your own items.".format(given_goods + 1))
+    print("{}. Add all items to the cart.\n".format(given_goods + 2))
     while True:
         try:
             choice = int(input('Select an item by number to add to your cart: '))
@@ -96,6 +95,8 @@ def add_items():
             if my_index == choice:
                 NAME.append(k)
                 PRICE.append(v)
+                MY_INVENTORY.set_product_name(NAME)
+                MY_INVENTORY.set_product_price(PRICE)
         while True:
             try:
                 QUANTITY.append(int(input('Please enter in the quantity: ')))
@@ -103,8 +104,8 @@ def add_items():
                 break
             except ValueError:
                 print("You must enter in a number")
-        MY_INVENTORY.set_product_name(NAME)
-        MY_INVENTORY.set_product_price(PRICE)
+        # MY_INVENTORY.set_product_name(NAME)
+        # MY_INVENTORY.set_product_price(PRICE)
     elif choice == given_goods + 1:
         while True:
             try:
@@ -129,7 +130,19 @@ def add_items():
                 except ValueError:
                     print("Please enter in the quantity, it should be a number ")
         MY_INVENTORY.set_product_name(NAME)
-
+    elif choice == given_goods + 2:
+        for k, v in goods:
+            NAME.append(k)
+            PRICE.append(v)
+            while True:
+                try:
+                    QUANTITY.append(int(input('Please enter in the quantity for {}: '.format(k))))
+                    MY_INVENTORY.set_quantity(QUANTITY)
+                    break
+                except ValueError:
+                    print("You must enter in a number")
+            MY_INVENTORY.set_product_name(NAME)
+            MY_INVENTORY.set_product_price(PRICE)
     elif choice == QUIT:
         quit_program()
 

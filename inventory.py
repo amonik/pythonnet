@@ -8,7 +8,7 @@ class Inventory:
         self.__product_price = []
         self.__product_quantity = []
         self.__base_inventory = {}
-        self.__total = []
+        self.__total = 0
 
     """ The set_product method sets the product_name attribute"""
 
@@ -44,7 +44,10 @@ class Inventory:
                                                                      self.get_product_name()[i],
                                                                      self.get_product_price()[i],
                                                                      self.get_quantity()[i] *
-                                                                     self.get_product_price()[i], 2))
+                                                                     self.get_product_price()[i]))
+
+            # self.__total += (self.get_quantity()[i] * self.get_product_price()[i])
+        # print(self.__total)
 
     def get_base_inventory(self):
         self.__base_inventory = {'Bread': 2.49,
@@ -59,6 +62,10 @@ class Inventory:
         return self.__base_inventory
 
     def grand_total(self):
+        # Setting this to zero is a must or it will sum everything wrong.
+        self.__total = 0
         for j in range(len(self.get_product_price())):
-            self.__total.append(self.get_product_price()[j] * self.get_quantity()[j])
-        return "Your grand total with tax is: ${:.2f}\n".format(sum(self.__total) * 1.0825)
+            self.__total += (self.get_product_price()[j] * self.get_quantity()[j])
+        return "Your grand total with tax is: ${:.2f}\n".format(self.__total * 1.0825)
+
+
