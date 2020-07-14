@@ -63,14 +63,20 @@ class MoonBank:
         tkinter.mainloop()
 
     def set_deposit(self):
-        self.my_deposit = float(self.deposit_entry.get())
-        self.my_total_deposits.append(self.my_deposit)
+        try:
+            self.my_deposit = float(self.deposit_entry.get())
+            self.my_total_deposits.append(self.my_deposit)
+        except ValueError:
+            print("Nothing entered or incorrect button pushed")
         print("Additions: {}".format(self.my_total_deposits))
         self.deposit_entry.delete(0, 'end')
 
     def set_withdrawals(self):
-        self.my_withdrawal = float(self.withdraw_entry.get())
-        self.my_total_withdrawals.append(self.my_withdrawal)
+        try:
+            self.my_withdrawal = float(self.withdraw_entry.get())
+            self.my_total_withdrawals.append(self.my_withdrawal)
+        except ValueError:
+            print("Nothing entered or incorrect button pushed")
         print("Deductions: {}".format(self.my_total_withdrawals))
         self.withdraw_entry.delete(0, 'end')
 
