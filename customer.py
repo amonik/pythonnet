@@ -1,4 +1,5 @@
 import random
+from custom_exceptions import NotEnough
 
 
 class Person:
@@ -49,6 +50,7 @@ class Employee(Person):
         super().__init__(first_name, last_name)
         self.emp_id = ""
         self.emp_salary = 0.0
+        self.__exemption = False
 
     def set_emp_id(self):
         self.emp_id = random.randint(0, 12342)
@@ -60,22 +62,15 @@ class Employee(Person):
     def set_emp_salary(self, s):
         self.emp_salary = s
         if self.emp_salary < 20000:
-            raise Exception("{} you need at least $20,000 to get a"
-                            " bonus".format(Employee.get_name(self)))
+            raise NotEnough(self.emp_salary)
+        else:
+            self.__exemption = True
 
     def get_emp_salary(self):
         return self.emp_salary
 
     def calculate_bonus(self):
-        return self.emp_salary * 0.20
-    """
-    def __str__(self):
-        print("The current Employee details on bonus:\nEmployee ID: {}\nEmployee name: {}\nSalary: "
-              "{}\nBonus: {}\nTotal Salary: {}".format(self.get_emp_id(), Employee.get_name(self),
-                                                       self.get_emp_salary(), self.calculate_bonus(),
-                                                       self.get_emp_salary() + self.calculate_bonus()))
-    """
-    # Class inheriting ValueError class
-    class NotTwentyK(ValueError):
-        def __init__(self, args):
-            super().__init__(args)
+        if self.__exemption:
+            return self.emp_salary * 0.20
+        else:
+            return self.emp_salary * 0
