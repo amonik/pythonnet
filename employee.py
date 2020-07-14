@@ -45,9 +45,9 @@ class Employee:
 
     """Used for printing the current state of the variables, it also calls various methods above"""
     def __str__(self):
-        return "Name: {}\nBonus: {}\nTotal Salary: {}\n" \
+        return "Name: {}\nBonus: {:.2f}\nTotal Salary: {:.2f}\n" \
                .format(Employee.get_name(self),
-                       round(Employee.__calculate_bonus(self), 2),
-                       round(Employee.total_salary(self), 2))
+                       Employee.__calculate_bonus(self),
+                       Employee.total_salary(self), 2)
 
 
