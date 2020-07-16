@@ -1,5 +1,5 @@
-from customer import Employee
-from custom_exceptions import NotEnough
+from customers import Employee
+from custom_exception import NotEnough
 
 # Employee with at least 20,000 and if not exception is raised.
 emp_good = Employee('Stephanie', 'Tian')

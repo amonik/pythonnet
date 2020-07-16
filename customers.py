@@ -1,5 +1,5 @@
 import random
-from custom_exceptions import NotEnough
+from custom_exception import NotEnough
 
 
 class Person:
