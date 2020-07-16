@@ -1,4 +1,6 @@
 """Get every other group of 2 numbers, if even"""
+import random
+NUM = 100
 
 
 def get_two_group(the_list):
@@ -7,6 +9,7 @@ def get_two_group(the_list):
     final_list = []
     a_list = []
     the_group = []
+
 
     for i in range(0, len(the_list), 2):
         new_list.append(i)
@@ -35,3 +38,7 @@ def get_two_group(the_list):
 
 
 print(get_two_group([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))
+
+# Set some random length list.
+print(get_two_group(random.sample(range(NUM), NUM)))
+
