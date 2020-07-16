@@ -4,9 +4,15 @@ from custom_exceptions import NotEnough
 # Employee with at least 20,000 and if not exception is raised.
 emp_good = Employee('Stephanie', 'Tian')
 emp_good.set_emp_id()
-pay = float(input("Please enter in your pay: "))
+while True:
+    try:
+        pay = float(input("Please enter in your pay: "))
+        break
+    except ValueError:
+        print("Must be a number.")
 try:
     emp_good.set_emp_salary(pay)
+# Call the custom Exception.
 except NotEnough as error:
     print(error)
 bonus = emp_good.calculate_bonus()
