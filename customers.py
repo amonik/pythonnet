@@ -1,5 +1,6 @@
 import random
 from custom_exception import NotEnough
+from custom_exception import IsNegative
 
 
 class Person:
@@ -61,8 +62,10 @@ class Employee(Person):
     # Add exception here
     def set_emp_salary(self, s):
         self.emp_salary = s
-        if self.emp_salary < 20000:
+        if 20000 > self.emp_salary > 0:
             raise NotEnough(self.emp_salary)
+        elif self.emp_salary < 0:
+            raise IsNegative(self.emp_salary)
         else:
             self.__exemption = True
 
