@@ -10,7 +10,6 @@ def get_two_group(the_list):
     a_list = []
     the_group = []
 
-
     for i in range(0, len(the_list), 2):
         new_list.append(i)
 
