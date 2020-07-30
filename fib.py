@@ -36,6 +36,11 @@ class Patient(Person):
         return self.__sickness
 
 
+class InvalidInput(ValueError):
+    def __init__(self, my_input):
+        super().__init__(f"You enter in incorrect value ${my_input}")
+
+
 
 
 
