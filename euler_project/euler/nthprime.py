@@ -1,10 +1,3 @@
-import sys
-
-
-# multiple of 3, 5
-# Is the number one of the 3 remaining multiples of 7? 7*7, 7*11, 7*13
-
-
 def is_prime(n):
     a = 0
     if n < 2:
